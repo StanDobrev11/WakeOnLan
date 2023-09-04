@@ -1,10 +1,5 @@
-import computer
-from computer import *
+from CHECK_VALID.computer import *
 import tkinter as tk
-
-
-
-
 
 
 class GuiWake:
@@ -42,8 +37,9 @@ class GuiWake:
             for c in range(2):
                 label = tk.Label(self.frame, text="pc%s" % (r + 1))
                 label.grid(row=r, column=0)
-                rad_button1 = tk.Radiobutton(self.frame, text="Start", value=len(comps), variable=x, indicatoron=False, width=7)
-                rad_button1.grid(row=r, column=c+1)
+                rad_button1 = tk.Radiobutton(self.frame, text="Start", value=len(comps), variable=x, indicatoron=False,
+                                             width=7)
+                rad_button1.grid(row=r, column=c + 1)
                 """
                 self.rad_button2 = tk.Radiobutton(self.frame, text="Stop", value=r, variable=x, indicatoron=False, width=7)
                 self.rad_button2.grid(row=r, column=2)

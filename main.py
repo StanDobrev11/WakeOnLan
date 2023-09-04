@@ -1,46 +1,30 @@
 from tkinter import *
-from threading import Thread
-from ping3 import ping
-import time
-
-"""" 
-command = ["python3", "sub.py"]
-# p1 = subprocess.run(command, capture_output=True, text=True)
-p1 = subprocess.run(command, stdout=subprocess.PIPE, text=True)
 
 
-print(p1.stdout)
-print("yo")
-"""
+def clear_view():
+    for slave in tk.grid_slaves():
+        slave.destroy()
 
 
-def background_task():
-    while True:
-        time.sleep(2)
-        if ping("192.168.100.2") != False:
-            btn.config(fg="green")
-
-        else:
-            btn.config(fg="red")
-
-        print(ping("192.168.100.2"))
-
-daemon = Thread(target=background_task, daemon=True)
-daemon.start()
+def render_main_view():
+    Button(text='START', bg='green', fg='red').grid(row=0, column=0, padx=20, pady=20)
+    Button(text='STOP', bg='red', fg='green').grid(row=1, column=0, padx=20, pady=20)
+    menu = Menu()
+    tk.config(menu=menu)
+    menu.add_command(label="Settings", command=render_settings_window)
 
 
-root = Tk()
+def render_settings_window():
+    set_win = Toplevel()
+    set_win.geometry('500x500')
+    set_win.title('Settings')
+    Label(set_win, text='Enter computer name: ').grid(row=0, column=0)
+    tk.withdraw()
+    
 
+tk = Tk()
+tk.geometry('250x300')
+tk.title('WakeOnLan')
 
-root.geometry("200x200")
-
-for r in range(3):
-    for c in range(2):
-        btn = Button(root,
-                     text="OFF",
-                     )
-        btn.pack()
-
-
-
-root.mainloop()
+render_main_view()
+tk.mainloop()

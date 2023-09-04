@@ -3,7 +3,7 @@
 from time import sleep
 from threading import Thread
 from ping3 import ping
-import main
+from CHECK_VALID import main
 
 
 # long-running background task
